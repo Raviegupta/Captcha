@@ -23,11 +23,8 @@ let refreshCaptcha = () => {
     let newCaptcha = captcha();
     document.querySelector('.captcha').innerHTML = newCaptcha;
     document.querySelector('.success').innerHTML = '';
-    document.querySelector('.success').innerHTML = '';
+    document.querySelector('.fail').innerHTML = '';
 }
-
-
-
 
 let submit = () => {
     let x = document.querySelector('.captcha-input').value;
@@ -40,12 +37,18 @@ let submit = () => {
     if(x == y) {
         console.log('Success');
         document.querySelector('.success').innerHTML = 'Success';
+        setTimeout(() => {
+            document.querySelector('.success').innerHTML = '';
+        }, 3000); // show for 3 seconds
     } else {
         console.log('Invalid Captcha');
-        document.querySelector('.success').innerHTML = 'Invalid Captcha';
-
+        document.querySelector('.fail').innerHTML = 'Invalid Captcha';
+        setTimeout(() => {
+            document.querySelector('.fail').innerHTML = '';
+        }, 3000); // show for 3 seconds
     }  
 }
+
 
 
 
